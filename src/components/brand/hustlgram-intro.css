@@ -53,6 +53,35 @@
     hg-text-fade 0.55s ease 1s forwards;
 }
 
+/* Footer: same motion, slightly larger than header */
+.hg-intro--footer .hg-intro__lockup {
+  gap: 0.45rem;
+  transform: translateX(2.35rem);
+  animation: hg-lockup-shift-footer 0.85s cubic-bezier(0.16, 1, 0.3, 1) 1s
+    forwards;
+}
+
+.hg-intro--footer .hg-intro__mark {
+  height: 1.35rem;
+  animation: hg-mark-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+.hg-intro--footer .hg-intro__text {
+  height: 0.56rem;
+  animation:
+    hg-text-wipe 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards,
+    hg-text-fade 0.55s ease 1s forwards;
+}
+
+@keyframes hg-lockup-shift-footer {
+  from {
+    transform: translateX(2.35rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .hg-intro--themed .hg-intro__mark,
 .hg-intro--themed .hg-intro__text {
   filter: brightness(0);

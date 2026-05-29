@@ -119,15 +119,39 @@
   --sidebar-ring: #ffffff;
 }
 
+/* Hide site until intro finishes (class set by beforeInteractive script) */
+html.hg-intro-active .site-shell {
+  visibility: hidden;
+}
+
+html.hg-intro-active body {
+  overflow: hidden;
+  background: #000;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease;
   }
   html {
     @apply font-sans scroll-smooth;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  @supports (view-transition-name: root) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.4s;
+      animation-timing-function: ease-in-out;
+    }
   }
   @media (prefers-reduced-motion: reduce) {
     html {

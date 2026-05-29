@@ -2,15 +2,17 @@ export const siteConfig = {
   name: "Hustlgram",
   tagline: "Performance-driven websites & growth",
   hero: {
-    titlePrefix: "Busy building premium websites for",
+    titleLead: "Busy building premium",
+    titleHighlight: "websites",
+    titleTail: "for",
     titleWords: ["businesses", "brands", "startups", "founders"] as const,
     description:
       "From strategy and UI/UX design to development and launch, we deliver websites that combine premium visuals with real business results.",
   },
   profile: {
-    name: "Your Name",
+    name: "Fehd",
     role: "Founder · Design & Development",
-    bio: "We help businesses launch premium websites that look sharp and convert. This card is a placeholder — we'll refine the story and layout together.",
+    bio: "I build premium websites that look sharp and convert — from strategy and design through launch.",
   },
   description:
     "From strategy and UI/UX design to development and launch, we deliver websites that combine premium visuals with real business results.",

@@ -3,18 +3,38 @@
 import { useEffect, useState } from "react";
 
 import { HustlgramLogoAnimated } from "@/components/brand/hustlgram-logo-animated";
-import { INTRO_EXIT_MS, INTRO_REMOVE_MS, INTRO_STORAGE_KEY } from "@/lib/intro";
+import {
+  INTRO_ACTIVE_CLASS,
+  INTRO_EXIT_MS,
+  INTRO_REMOVE_MS,
+  INTRO_STORAGE_KEY,
+} from "@/lib/intro";
 import { cn } from "@/lib/utils";
 
+function clearIntroLock() {
+  document.documentElement.classList.remove(INTRO_ACTIVE_CLASS);
+  document.body.style.overflow = "";
+}
+
 export function IntroSplash() {
-  const [visible, setVisible] = useState(false);
+  const [active, setActive] = useState(false);
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
-    const seen = sessionStorage.getItem(INTRO_STORAGE_KEY);
-    if (seen) return;
+    const shouldPlay =
+      document.documentElement.classList.contains(INTRO_ACTIVE_CLASS) ||
+      !sessionStorage.getItem(INTRO_STORAGE_KEY);
 
-    const showTimer = window.setTimeout(() => setVisible(true), 0);
+    if (!shouldPlay) {
+      clearIntroLock();
+      return;
+    }
+
+    if (!document.documentElement.classList.contains(INTRO_ACTIVE_CLASS)) {
+      document.documentElement.classList.add(INTRO_ACTIVE_CLASS);
+    }
+
+    setActive(true);
     document.body.style.overflow = "hidden";
 
     const prefersReduced = window.matchMedia(
@@ -30,24 +50,24 @@ export function IntroSplash() {
     }, exitDelay);
 
     const removeTimer = window.setTimeout(() => {
-      setVisible(false);
-      document.body.style.overflow = "";
+      clearIntroLock();
+      setActive(false);
     }, removeDelay);
 
     return () => {
-      window.clearTimeout(showTimer);
       window.clearTimeout(exitTimer);
       window.clearTimeout(removeTimer);
-      document.body.style.overflow = "";
+      clearIntroLock();
     };
   }, []);
 
-  if (!visible) return null;
+  if (!active) return null;
 
   return (
     <div
+      id="intro-splash"
       className={cn(
-        "fixed inset-0 z-[100] flex items-center justify-center bg-black transition-opacity duration-600 ease-out",
+        "fixed inset-0 z-[100] flex items-center justify-center bg-black transition-opacity duration-700 ease-out",
         exiting && "pointer-events-none opacity-0",
       )}
       aria-hidden={exiting}

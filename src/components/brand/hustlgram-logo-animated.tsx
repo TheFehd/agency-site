@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import "./hustlgram-intro.css";
 
 type HustlgramLogoAnimatedProps = {
-  size?: "splash" | "compact" | "header";
+  size?: "splash" | "compact" | "header" | "footer";
   /** Black on light / white on dark (for site chrome, not black splash) */
   themed?: boolean;
   glow?: boolean;
@@ -22,6 +22,7 @@ export function HustlgramLogoAnimated({
         "hg-intro",
         size === "compact" && "hg-intro--compact",
         size === "header" && "hg-intro--header",
+        size === "footer" && "hg-intro--footer",
         themed && "hg-intro--themed",
         !glow && "hg-intro--no-glow",
         className,

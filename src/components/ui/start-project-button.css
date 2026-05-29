@@ -1,0 +1,77 @@
+.start-project-btn {
+  --sp-green: #86efac;
+  --sp-green-bg: #bbf7d0;
+  --sp-green-text: #15803d;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: auto;
+  padding: 12px 18px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.dark .start-project-btn {
+  --sp-green: #4ade80;
+  --sp-green-bg: color-mix(in srgb, #4ade80 38%, transparent);
+  --sp-green-text: #86efac;
+}
+
+.start-project-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 50px;
+  background: var(--sp-green-bg);
+  width: 45px;
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+.start-project-btn span {
+  position: relative;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--sp-green-text);
+}
+
+.start-project-btn svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--sp-green-text);
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+
+.start-project-btn:hover::before {
+  width: 100%;
+  background: var(--sp-green-bg);
+}
+
+.start-project-btn:hover svg {
+  transform: translateX(0);
+}
+
+.start-project-btn:active {
+  transform: scale(0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .start-project-btn,
+  .start-project-btn::before,
+  .start-project-btn svg {
+    transition: none;
+  }
+}

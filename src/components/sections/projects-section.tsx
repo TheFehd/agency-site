@@ -2,11 +2,8 @@
 
 import { ProjectsCarousel } from "@/components/projects/projects-carousel";
 import { SectionReveal } from "@/components/motion/section-reveal";
-import Link from "next/link";
-
+import { StartProjectButton } from "@/components/ui/start-project-button";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export function ProjectsSection() {
   return (
@@ -26,15 +23,7 @@ export function ProjectsSection() {
         <ProjectsCarousel />
 
         <div className="mt-12 flex justify-center">
-          <Link
-            href="#book"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "h-11 rounded-full px-6",
-            )}
-          >
-            Start your project
-          </Link>
+          <StartProjectButton />
         </div>
       </div>
     </section>

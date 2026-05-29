@@ -1,0 +1,37 @@
+.soft-field {
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 0.85em 1em;
+  width: 100%;
+  background-color: color-mix(in srgb, var(--muted) 90%, var(--background));
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.08);
+  transition:
+    background-color 300ms ease-in-out,
+    transform 300ms ease-in-out,
+    box-shadow 300ms ease-in-out;
+}
+
+.dark .soft-field {
+  background-color: color-mix(in srgb, var(--foreground) 8%, transparent);
+  box-shadow: inset 2px 5px 12px rgba(0, 0, 0, 0.45);
+}
+
+.soft-field:focus {
+  background-color: var(--background);
+  transform: scale(1.02);
+  box-shadow:
+    10px 10px 36px rgba(0, 0, 0, 0.08),
+    -8px -8px 36px rgba(255, 255, 255, 0.5);
+}
+
+.dark .soft-field:focus {
+  box-shadow:
+    10px 10px 40px rgba(0, 0, 0, 0.55),
+    -6px -6px 30px rgba(255, 255, 255, 0.04),
+    0 0 24px rgba(255, 255, 255, 0.12);
+}
+
+.soft-field::placeholder {
+  color: var(--muted-foreground);
+}

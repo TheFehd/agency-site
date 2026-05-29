@@ -1,0 +1,73 @@
+.book-btn {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--foreground) 35%, transparent);
+  background: transparent;
+  color: var(--foreground);
+  box-shadow: 0 0 0 0 transparent;
+  transition:
+    background 0.2s ease-in,
+    color 0.2s ease-in,
+    border-color 0.2s ease-in,
+    box-shadow 0.2s ease-out;
+}
+
+.book-btn::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0;
+  opacity: 0;
+  background: var(--primary-foreground);
+  box-shadow: 0 0 40px 24px var(--primary-foreground);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+.book-btn:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+  box-shadow: 0 0 28px 5px color-mix(in srgb, var(--foreground) 28%, transparent);
+  transition:
+    background 0.2s ease-out,
+    color 0.2s ease-out,
+    border-color 0.2s ease-out,
+    box-shadow 0.2s ease-out;
+}
+
+.book-btn:hover::before {
+  animation: book-btn-shine 0.5s linear;
+}
+
+.book-btn:active {
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 0.2s ease-in;
+}
+
+@keyframes book-btn-shine {
+  from {
+    opacity: 0;
+    left: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-btn::before {
+    display: none;
+  }
+
+  .book-btn:hover {
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+}

@@ -1,0 +1,79 @@
+.spin-border-card {
+  position: relative;
+  width: 100%;
+  max-width: 48rem;
+  border-radius: 1.5rem;
+  margin-inline: auto;
+  isolation: isolate;
+}
+
+.spin-border-card__spin {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.spin-border-card__spin--blur {
+  inset: -3px;
+  filter: blur(2.5rem);
+}
+
+.spin-border-card__spin--intense {
+  inset: -2px;
+  filter: blur(0.35rem);
+}
+
+.spin-border-card__spin::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  animation: spin-border-rotate 8s cubic-bezier(0.56, 0.15, 0.28, 0.86) infinite;
+}
+
+.spin-border-card__spin--blur::before {
+  background: linear-gradient(-45deg, #fff, transparent 46% 54%, #d4d4d4);
+}
+
+.spin-border-card__spin--intense::before {
+  background: linear-gradient(-45deg, #fafafa, transparent 35% 65%, #a3a3a3);
+}
+
+.dark .spin-border-card__spin--blur::before {
+  background: linear-gradient(-45deg, #fff, transparent 46% 54%, #737373);
+  box-shadow: 0 0 48px rgba(255, 255, 255, 0.2);
+}
+
+.dark .spin-border-card__spin--intense::before {
+  background: linear-gradient(-45deg, #fff, transparent 35% 65%, #a3a3a3);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.25);
+}
+
+.spin-border-card__inner {
+  position: relative;
+  z-index: 1;
+  margin: 2px;
+  border-radius: calc(1.5rem - 2px);
+  background: var(--background);
+}
+
+@keyframes spin-border-rotate {
+  0% {
+    rotate: 10deg;
+  }
+  50% {
+    rotate: 190deg;
+  }
+  100% {
+    rotate: 370deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin-border-card__spin::before {
+    animation: none;
+    rotate: 0deg;
+  }
+}

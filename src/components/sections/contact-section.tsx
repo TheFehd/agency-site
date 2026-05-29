@@ -5,11 +5,12 @@ import { useState } from "react";
 import { SectionReveal } from "@/components/motion/section-reveal";
 import { Button } from "@/components/ui/button";
 import { BlurTextReveal } from "@/components/motion/blur-text-reveal";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Textarea } from "@/components/ui/textarea";
 import { siteConfig } from "@/content/site";
+import { cn } from "@/lib/utils";
+
+import "@/components/ui/soft-field.css";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -83,29 +84,40 @@ export function ContactSection() {
           </SectionReveal>
 
           <SectionReveal delay={0.1}>
-            <form onSubmit={onSubmit} className="space-y-5 rounded-2xl border border-border/80 bg-card/40 p-6 sm:p-8">
+            <form
+              onSubmit={onSubmit}
+              className="space-y-5 rounded-2xl border border-border/80 bg-card/40 p-6 sm:p-8"
+            >
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
-                <Input id="name" name="name" required autoComplete="name" />
+                <input
+                  id="name"
+                  name="name"
+                  required
+                  autoComplete="name"
+                  className="soft-field text-base md:text-sm"
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input
+                <input
                   id="email"
                   name="email"
                   type="email"
                   required
                   autoComplete="email"
+                  className="soft-field text-base md:text-sm"
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="message">Message</Label>
-                <Textarea
+                <textarea
                   id="message"
                   name="message"
                   required
                   rows={5}
                   placeholder="Tell us about your goals, timeline, and budget range."
+                  className={cn("soft-field field-sizing-content min-h-28 resize-y")}
                 />
               </div>
               <Button

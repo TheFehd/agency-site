@@ -31,10 +31,10 @@ export function ProfileAboutDialog({ className }: ProfileAboutDialogProps) {
         aria-label={`About ${profile.name}`}
       >
         <Image
-          src="/profile.webp"
+          src="/profile.jpg"
           alt=""
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
           sizes="68px"
           priority
         />
@@ -42,13 +42,13 @@ export function ProfileAboutDialog({ className }: ProfileAboutDialogProps) {
 
       <DialogContent className="overflow-hidden">
         <div className="border-b border-border bg-muted/40 p-6">
-          <div className="relative mx-auto size-20 overflow-hidden rounded-full border border-border">
+          <div className="relative mx-auto size-24 overflow-hidden rounded-full border border-border">
             <Image
-              src="/profile.webp"
+              src="/profile.jpg"
               alt=""
               fill
-              className="object-cover"
-              sizes="80px"
+              className="object-cover object-[center_20%]"
+              sizes="96px"
             />
           </div>
         </div>
@@ -58,10 +58,6 @@ export function ProfileAboutDialog({ className }: ProfileAboutDialogProps) {
           <p className="text-sm font-medium text-muted-foreground">{profile.role}</p>
           <DialogDescription className="pt-2">{profile.bio}</DialogDescription>
         </DialogHeader>
-
-        <p className="px-6 pb-6 text-center text-xs text-muted-foreground">
-          More about us coming soon — content & design in progress.
-        </p>
       </DialogContent>
     </Dialog>
   );

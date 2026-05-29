@@ -1,0 +1,111 @@
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.social-links__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-links__tooltip {
+  position: absolute;
+  top: -2rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--background);
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  transform: scale(0);
+  transition: transform 0.25s ease;
+  pointer-events: none;
+}
+
+.social-links__btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.dark .social-links__btn {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.social-links__btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  height: 0;
+  transition: height 0.3s ease;
+  z-index: 0;
+}
+
+.social-links__btn:hover {
+  color: var(--background);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.dark .social-links__btn:hover {
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.2),
+    0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.social-links__btn:hover::before {
+  height: 100%;
+}
+
+.social-links__icon {
+  position: relative;
+  z-index: 1;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.social-links__item--instagram .social-links__btn::before {
+  background: linear-gradient(40deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+.social-links__item--instagram:hover .social-links__tooltip {
+  transform: scale(1);
+  background: linear-gradient(40deg, #833ab4, #fd1d1d);
+}
+
+.social-links__item--linkedin .social-links__btn::before {
+  background: #0a66c2;
+}
+
+.social-links__item--linkedin:hover .social-links__tooltip {
+  transform: scale(1);
+  background: #0a66c2;
+}
+
+.social-links__item--x .social-links__btn::before {
+  background: var(--foreground);
+}
+
+.social-links__item--x:hover .social-links__tooltip {
+  transform: scale(1);
+  background: var(--foreground);
+  color: var(--background);
+}

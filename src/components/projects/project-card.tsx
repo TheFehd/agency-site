@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 
 import { BlurTextReveal } from "@/components/motion/blur-text-reveal";
+import { ProjectCardMedia } from "@/components/projects/project-card-media";
 import type { Project } from "@/content/projects";
 import { fadeUp } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -21,19 +21,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
 
   const inner = (
     <>
-      <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-muted">
-        <Image
-          src={project.image}
-          alt=""
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60"
-          aria-hidden
-        />
-      </div>
+      <ProjectCardMedia project={project} />
       <div className="mt-5 flex items-start justify-between gap-4">
         <div>
           <p className="text-xs text-muted-foreground">{project.year}</p>

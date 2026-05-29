@@ -5,51 +5,44 @@ export type Project = {
   tags: string[];
   description: string;
   image: string;
+  /** When set, the card crossfades between these images (e.g. ELIX stream + AI views). */
+  images?: string[];
   href?: string;
   featured?: boolean;
+  recent?: boolean;
 };
 
 export const projects: Project[] = [
   {
-    id: "atlas",
-    title: "Atlas Health",
+    id: "elix",
+    title: "ELIX",
     year: 2026,
-    tags: ["Healthcare", "Web app"],
+    tags: ["Web app", "Design"],
     description:
-      "Patient-first platform with calm typography, trust signals, and a booking flow tuned for conversion.",
-    image: "/projects/atlas.svg",
-    href: "#",
+      "AI-powered movie streamer that suggests films based on your mood—from the streaming experience to the Mood Matcher AI feature.",
+    image: "/projects/elix-stream.png",
+    images: ["/projects/elix-stream.png", "/projects/elix-ai.png"],
     featured: true,
   },
   {
-    id: "northline",
-    title: "Northline Capital",
-    year: 2025,
-    tags: ["Finance", "Marketing site"],
+    id: "mav-detail",
+    title: "MAV Detail",
+    year: 2026,
+    tags: ["Marketing site", "Sales"],
     description:
-      "Editorial layout and restrained motion for a boutique firm positioning for institutional clients.",
-    image: "/projects/northline.svg",
-    href: "#",
+      "Premium car detailing studio in South Florida—marketing site built to turn interest into booked services.",
+    image: "/projects/mav-detail.png",
     featured: true,
   },
   {
-    id: "verde",
-    title: "Verde Commerce",
-    year: 2025,
-    tags: ["Ecommerce", "Brand"],
+    id: "jmb-brick-co",
+    title: "JMB Brick Co.",
+    year: 2026,
+    tags: ["Design", "Development"],
     description:
-      "Product storytelling and performance-focused storefront experience for a DTC launch.",
-    image: "/projects/verde.svg",
-    href: "#",
-  },
-  {
-    id: "lumen",
-    title: "Lumen AI",
-    year: 2025,
-    tags: ["SaaS", "Product"],
-    description:
-      "Dark-mode product marketing site with clear pricing narrative and demo-led hero.",
-    image: "/projects/lumen.svg",
-    href: "#",
+      "LEGO marketplace for buying, selling, and collecting sets—design and development for a collector-focused storefront.",
+    image: "/projects/jmb-brick-co.png",
+    recent: true,
+    featured: true,
   },
 ];

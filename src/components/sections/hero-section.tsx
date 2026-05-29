@@ -5,12 +5,16 @@ import { motion } from "motion/react";
 
 import { BlurTextReveal } from "@/components/motion/blur-text-reveal";
 import { FlippingWords } from "@/components/motion/flipping-words";
+import { TextHighlight } from "@/components/motion/text-highlight";
 import { ProfileAboutDialog } from "@/components/profile/profile-about-dialog";
+import { BookButton } from "@/components/ui/book-button";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function HeroSection() {
+  const { hero } = siteConfig;
+
   return (
     <section
       id="hero"
@@ -28,16 +32,15 @@ export function HeroSection() {
         </motion.div>
 
         <h1 className="font-heading mx-auto max-w-4xl text-3xl font-medium leading-tight tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-[3.25rem]">
-          <span>{siteConfig.hero.titlePrefix}</span>{" "}
-          <FlippingWords
-            words={siteConfig.hero.titleWords}
-            className="text-foreground"
-          />
+          <span>{hero.titleLead} </span>
+          <TextHighlight>{hero.titleHighlight}</TextHighlight>
+          <span> {hero.titleTail} </span>
+          <FlippingWords words={hero.titleWords} className="text-foreground" />
         </h1>
 
         <BlurTextReveal
           as="p"
-          text={siteConfig.hero.description}
+          text={hero.description}
           className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg"
           delay={0.2}
           by="word"
@@ -50,15 +53,9 @@ export function HeroSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Link
-            href="#book"
-            className={cn(
-              buttonVariants({ size: "lg" }),
-              "h-11 min-w-[9.5rem] rounded-full px-6",
-            )}
-          >
+          <BookButton href="#book" className="rounded-full">
             {siteConfig.cta.primary}
-          </Link>
+          </BookButton>
           <Link
             href="#projects"
             className={cn(

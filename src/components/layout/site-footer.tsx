@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { HustlgramLogo } from "@/components/brand/hustlgram-logo";
+import { FooterLogo } from "@/components/brand/footer-logo";
+import { SocialLinks } from "@/components/layout/social-links";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/content/site";
 
@@ -12,7 +13,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div className="space-y-3">
-            <HustlgramLogo />
+            <FooterLogo />
             <p className="max-w-sm text-sm text-muted-foreground">
               {siteConfig.tagline}
             </p>
@@ -28,19 +29,7 @@ export function SiteFooter() {
               </Link>
             ))}
           </div>
-          <div className="flex flex-wrap gap-4 text-sm">
-            {siteConfig.socials.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {social.label}
-              </a>
-            ))}
-          </div>
+          <SocialLinks />
         </div>
         <Separator className="my-8" />
         <div className="flex flex-col gap-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
