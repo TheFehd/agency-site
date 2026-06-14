@@ -25,9 +25,9 @@ export function ReportSectionReveal({
   return (
     <motion.div
       className={cn(className)}
-      initial={{ opacity: 0, y: 32, filter: "blur(8px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-60px", amount: 0.15 }}
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px 0px", amount: 0.08 }}
       transition={{
         type: "spring",
         stiffness: 78,
@@ -44,45 +44,23 @@ export function ReportSectionReveal({
 type ReportStaggerProps = {
   children: ReactNode;
   className?: string;
-  stagger?: number;
 };
 
-export function ReportStagger({
-  children,
-  className,
-  stagger = 0.07,
-}: ReportStaggerProps) {
-  const prefersReducedMotion = useReducedMotion();
-
-  if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
-  }
-
-  return (
-    <motion.div
-      className={cn(className)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-40px", amount: 0.12 }}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: { staggerChildren: stagger, delayChildren: 0.04 },
-        },
-      }}
-    >
-      {children}
-    </motion.div>
-  );
+export function ReportStagger({ children, className }: ReportStaggerProps) {
+  return <div className={cn(className)}>{children}</div>;
 }
+
+type ReportStaggerItemProps = {
+  children: ReactNode;
+  className?: string;
+  index?: number;
+};
 
 export function ReportStaggerItem({
   children,
   className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+  index = 0,
+}: ReportStaggerItemProps) {
   const prefersReducedMotion = useReducedMotion();
 
   if (prefersReducedMotion) {
@@ -92,20 +70,15 @@ export function ReportStaggerItem({
   return (
     <motion.div
       className={cn(className)}
-      variants={{
-        hidden: { opacity: 0, y: 22, scale: 0.98, filter: "blur(6px)" },
-        visible: {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          filter: "blur(0px)",
-          transition: {
-            type: "spring",
-            stiffness: 82,
-            damping: 20,
-            mass: 0.8,
-          },
-        },
+      initial={{ opacity: 0, y: 22, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-24px 0px", amount: 0.06 }}
+      transition={{
+        type: "spring",
+        stiffness: 82,
+        damping: 20,
+        mass: 0.8,
+        delay: index * 0.06,
       }}
     >
       {children}

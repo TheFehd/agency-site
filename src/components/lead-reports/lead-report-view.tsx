@@ -187,10 +187,10 @@ export function LeadReportView({ report }: LeadReportViewProps) {
             percentage ties to published industry data or a live site audit — not guesses.
           </p>
           <ReportStagger className="grid gap-4 lg:grid-cols-2">
-            {report.leaks.map((leak) => {
+            {report.leaks.map((leak, index) => {
               const accent = leak.severity === "critical" ? "bad" : "warn";
               return (
-                <ReportStaggerItem key={leak.id}>
+                <ReportStaggerItem key={leak.id} index={index}>
                 <ReportIconCard
                   icon={reportIcons[leak.icon]}
                   title={leak.name}
@@ -506,7 +506,7 @@ export function LeadReportView({ report }: LeadReportViewProps) {
           </p>
           <ReportStagger className="mb-11 grid gap-3 sm:grid-cols-2">
             {report.build.map((item, i) => (
-              <ReportStaggerItem key={item.title}>
+              <ReportStaggerItem key={item.title} index={i}>
                 <ReportIconCard
                   compact
                   accent="good"
