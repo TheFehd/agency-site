@@ -30,7 +30,7 @@ export function ProjectCardMedia({ project, className }: ProjectCardMediaProps) 
   return (
     <div className={cn("relative aspect-[16/10] overflow-hidden rounded-xl bg-muted", className)}>
       {project.recent ? (
-        <span className="absolute top-3 left-3 z-10 rounded-full bg-[#86efac] px-2.5 py-0.5 text-xs font-bold tracking-wide text-[#15803d] uppercase dark:bg-[#4ade80]/90 dark:text-[#14532d]">
+        <span className="absolute top-3 left-3 z-10 rounded-full border border-border bg-background px-2.5 py-0.5 text-xs font-bold tracking-wide text-foreground uppercase">
           Recent
         </span>
       ) : null}

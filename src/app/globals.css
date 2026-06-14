@@ -120,7 +120,8 @@
 }
 
 /* Hide site until intro finishes (class set by beforeInteractive script) */
-html.hg-intro-active .site-shell {
+html.hg-intro-active .site-shell,
+html.hg-intro-active .lead-report-shell {
   visibility: hidden;
 }
 

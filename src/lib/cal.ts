@@ -6,9 +6,12 @@ export function getCalLink(): string {
   return process.env.NEXT_PUBLIC_CALCOM_LINK ?? DEFAULT_CAL_LINK;
 }
 
-export function getCalTheme(): "light" | "dark" {
+/** Defaults to light so the embed matches the site's white-first theme. */
+export function getCalTheme(override?: "light" | "dark"): "light" | "dark" {
+  if (override) return override;
   const theme = process.env.NEXT_PUBLIC_CALCOM_THEME;
-  return theme === "light" ? "light" : "dark";
+  if (theme === "dark") return "dark";
+  return "light";
 }
 
 export function isCalConfigured(): boolean {
@@ -16,10 +19,10 @@ export function isCalConfigured(): boolean {
   return Boolean(link && link.length > 0 && !link.includes("your-username"));
 }
 
-export function getCalInlineConfig() {
+export function getCalInlineConfig(theme?: "light" | "dark") {
   return {
     layout: "month_view" as const,
     useSlotsViewOnSmallScreen: "true" as const,
-    theme: getCalTheme(),
+    theme: getCalTheme(theme),
   };
 }

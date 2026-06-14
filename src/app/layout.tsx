@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { DM_Sans, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
 
 import { IntroSplash } from "@/components/brand/intro-splash";
-import { JsonLd } from "@/components/json-ld";
-import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteHeader } from "@/components/layout/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/content/site";
 import { INTRO_BOOT_SCRIPT } from "@/lib/intro";
@@ -67,12 +65,8 @@ export default function RootLayout({
       <body className="min-h-full font-sans antialiased">
         <ThemeProvider>
           <IntroSplash />
-          <div id="site-shell" className="site-shell flex min-h-full flex-col">
-            <SiteHeader />
-            {children}
-            <SiteFooter />
-          </div>
-          <JsonLd />
+          {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

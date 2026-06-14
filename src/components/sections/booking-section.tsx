@@ -1,6 +1,7 @@
 "use client";
 
 import Cal, { getCalApi } from "@calcom/embed-react";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 import { SectionReveal } from "@/components/motion/section-reveal";
@@ -17,18 +18,20 @@ export function BookingSection() {
   const [ready, setReady] = useState(false);
   const calLink = getCalLink();
   const configured = isCalConfigured();
+  const { resolvedTheme } = useTheme();
+  const calTheme = getCalTheme(resolvedTheme === "dark" ? "dark" : "light");
 
   useEffect(() => {
     void (async () => {
       const cal = await getCalApi({ namespace: CAL_NAMESPACE });
       cal("ui", {
-        theme: getCalTheme(),
+        theme: calTheme,
         hideEventTypeDetails: false,
         layout: "month_view",
       });
       setReady(true);
     })();
-  }, []);
+  }, [calTheme]);
 
   return (
     <section id="book" className="scroll-mt-20 border-b border-border/60 py-20 sm:py-28">
@@ -43,7 +46,7 @@ export function BookingSection() {
 
         <div
           id="my-cal-inline-30min"
-          className="relative mt-10 min-h-[680px] w-full overflow-auto rounded-2xl border border-border/80 bg-card/50 p-2 sm:mt-12 sm:p-4"
+          className="relative mt-10 min-h-[680px] w-full overflow-auto rounded-2xl border border-border bg-card p-2 sm:mt-12 sm:p-4"
         >
           {!ready ? (
             <div
@@ -54,10 +57,11 @@ export function BookingSection() {
 
           {configured ? (
             <Cal
+              key={calTheme}
               namespace={CAL_NAMESPACE}
               calLink={calLink}
               style={{ width: "100%", height: "100%", minHeight: "640px", overflow: "scroll" }}
-              config={getCalInlineConfig()}
+              config={getCalInlineConfig(calTheme)}
             />
           ) : (
             <div className="flex min-h-[640px] flex-col items-center justify-center gap-4 px-6 text-center">

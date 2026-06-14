@@ -1,7 +1,7 @@
 .start-project-btn {
-  --sp-green: #86efac;
-  --sp-green-bg: #bbf7d0;
-  --sp-green-text: #15803d;
+  --sp-fill: var(--foreground);
+  --sp-fill-bg: color-mix(in srgb, var(--foreground) 10%, var(--background));
+  --sp-fill-text: var(--foreground);
 
   position: relative;
   display: inline-flex;
@@ -15,12 +15,6 @@
   transition: all 0.2s ease;
 }
 
-.dark .start-project-btn {
-  --sp-green: #4ade80;
-  --sp-green-bg: color-mix(in srgb, #4ade80 38%, transparent);
-  --sp-green-text: #86efac;
-}
-
 .start-project-btn::before {
   content: "";
   position: absolute;
@@ -28,7 +22,7 @@
   left: 0;
   display: block;
   border-radius: 50px;
-  background: var(--sp-green-bg);
+  background: var(--sp-fill-bg);
   width: 45px;
   height: 45px;
   transition: all 0.3s ease;
@@ -39,7 +33,7 @@
   font-size: 1.0625rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: var(--sp-green-text);
+  color: var(--sp-fill-text);
 }
 
 .start-project-btn svg {
@@ -49,7 +43,7 @@
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke: var(--sp-green-text);
+  stroke: var(--sp-fill-text);
   stroke-width: 2;
   transform: translateX(-5px);
   transition: all 0.3s ease;
@@ -57,21 +51,18 @@
 
 .start-project-btn:hover::before {
   width: 100%;
-  background: var(--sp-green-bg);
+  background: var(--sp-fill);
+}
+
+.start-project-btn:hover span {
+  color: var(--background);
 }
 
 .start-project-btn:hover svg {
+  stroke: var(--background);
   transform: translateX(0);
 }
 
 .start-project-btn:active {
-  transform: scale(0.95);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .start-project-btn,
-  .start-project-btn::before,
-  .start-project-btn svg {
-    transition: none;
-  }
+  transform: scale(0.98);
 }

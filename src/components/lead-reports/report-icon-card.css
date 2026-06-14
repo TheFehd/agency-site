@@ -1,0 +1,346 @@
+.report-icon-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  background: color-mix(in srgb, var(--background) 50%, transparent);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 16px 40px color-mix(in srgb, #000 10%, transparent);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.report-icon-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.report-icon-card__glow {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  height: 16rem;
+  width: 16rem;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  filter: blur(3rem);
+  opacity: 0.55;
+  transition: opacity 0.7s ease, background 0.7s ease;
+  pointer-events: none;
+}
+
+.report-icon-card--bad .report-icon-card__glow {
+  background: color-mix(in srgb, var(--report-negative) 12%, transparent);
+}
+
+.report-icon-card--good .report-icon-card__glow {
+  background: color-mix(in srgb, var(--report-positive) 12%, transparent);
+}
+
+.report-icon-card--warn .report-icon-card__glow {
+  background: color-mix(in srgb, var(--report-warning) 12%, transparent);
+}
+
+.report-icon-card--neutral .report-icon-card__glow {
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+.report-icon-card:hover .report-icon-card__glow {
+  opacity: 0.85;
+}
+
+.report-icon-card--bad:hover .report-icon-card__glow {
+  background: color-mix(in srgb, var(--report-negative) 16%, transparent);
+}
+
+.report-icon-card--good:hover .report-icon-card__glow {
+  background: color-mix(in srgb, var(--report-positive) 16%, transparent);
+}
+
+.report-icon-card__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+}
+
+.report-icon-card--compact .report-icon-card__inner {
+  gap: 1rem;
+  padding: 1.125rem;
+}
+
+.report-icon-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent);
+  padding-bottom: 1.25rem;
+}
+
+.report-icon-card__icon {
+  display: flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.625rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  color: var(--foreground);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.report-icon-card--bad .report-icon-card__icon {
+  background: color-mix(in srgb, var(--report-negative) 12%, transparent);
+  color: var(--report-negative);
+}
+
+.report-icon-card--good .report-icon-card__icon {
+  background: color-mix(in srgb, var(--report-positive) 12%, transparent);
+  color: var(--report-positive);
+}
+
+.report-icon-card--warn .report-icon-card__icon {
+  background: color-mix(in srgb, var(--report-warning) 12%, transparent);
+  color: var(--report-warning);
+}
+
+.report-icon-card__badge {
+  flex-shrink: 0;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.report-icon-card__badge--good {
+  border: 1px solid color-mix(in srgb, var(--report-positive) 40%, transparent);
+  background: color-mix(in srgb, var(--report-positive) 12%, transparent);
+  color: var(--report-positive);
+}
+
+.report-icon-card__metrics {
+  display: flex;
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 6%, transparent);
+  padding-bottom: 0.25rem;
+}
+
+.report-icon-card__metrics--single .report-icon-card__metric {
+  flex: 1;
+}
+
+.report-icon-card__metric {
+  flex: 1;
+  min-width: 0;
+}
+
+.report-icon-card__metric + .report-icon-card__metric {
+  border-left: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+.report-icon-card__body {
+  margin-top: -0.25rem;
+}
+
+.report-icon-card__footer {
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent);
+  padding-top: 1.25rem;
+}
+
+/* Sparkline */
+
+.report-sparkline {
+  position: relative;
+  height: 6rem;
+  width: 100%;
+}
+
+.report-sparkline__stop-top[data-accent="bad"] {
+  stop-color: var(--report-negative);
+  stop-opacity: 0.22;
+}
+
+.report-sparkline__stop-bottom[data-accent="bad"] {
+  stop-color: var(--report-negative);
+  stop-opacity: 0;
+}
+
+.report-sparkline__stop-top[data-accent="good"] {
+  stop-color: var(--report-positive);
+  stop-opacity: 0.22;
+}
+
+.report-sparkline__stop-bottom[data-accent="good"] {
+  stop-color: var(--report-positive);
+  stop-opacity: 0;
+}
+
+.report-sparkline__stop-top[data-accent="warn"] {
+  stop-color: var(--report-warning);
+  stop-opacity: 0.2;
+}
+
+.report-sparkline__stop-bottom[data-accent="warn"] {
+  stop-color: var(--report-warning);
+  stop-opacity: 0;
+}
+
+.report-sparkline__stop-top[data-accent="neutral"] {
+  stop-color: var(--foreground);
+  stop-opacity: 0.14;
+}
+
+.report-sparkline__stop-bottom[data-accent="neutral"] {
+  stop-color: var(--foreground);
+  stop-opacity: 0;
+}
+
+.report-sparkline__line {
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  transition: stroke-dashoffset 0.05s linear;
+}
+
+.report-sparkline__line--in {
+  animation: report-spark-draw 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.report-sparkline__line--bad {
+  stroke: var(--report-negative);
+}
+
+.report-sparkline__line--good {
+  stroke: var(--report-positive);
+}
+
+.report-sparkline__line--warn {
+  stroke: var(--report-warning);
+}
+
+.report-sparkline__line--neutral {
+  stroke: var(--foreground);
+}
+
+.report-sparkline__area {
+  opacity: 0;
+}
+
+.report-sparkline__area--in {
+  animation: report-spark-fill 1.2s ease 0.35s forwards;
+}
+
+.report-sparkline__dot-wrap {
+  position: absolute;
+  right: -1px;
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.report-sparkline__dot-wrap--in {
+  animation: report-spark-dot 0.45s cubic-bezier(0.22, 1, 0.36, 1) 1.35s forwards;
+}
+
+.report-sparkline__dot {
+  position: relative;
+  z-index: 1;
+  height: 0.75rem;
+  width: 0.75rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.report-sparkline__dot--bad {
+  background: var(--report-negative);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--report-negative) 55%, transparent);
+}
+
+.report-sparkline__dot--good {
+  background: var(--report-positive);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--report-positive) 55%, transparent);
+}
+
+.report-sparkline__dot--warn {
+  background: var(--report-warning);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--report-warning) 55%, transparent);
+}
+
+.report-sparkline__pulse {
+  position: absolute;
+  inset: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: report-spark-pulse 2s ease-in-out infinite;
+}
+
+.report-sparkline__pulse--bad {
+  background: color-mix(in srgb, var(--report-negative) 28%, transparent);
+}
+
+.report-sparkline__pulse--good {
+  background: color-mix(in srgb, var(--report-positive) 28%, transparent);
+}
+
+.report-sparkline__pulse--warn {
+  background: color-mix(in srgb, var(--report-warning) 28%, transparent);
+}
+
+@keyframes report-spark-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes report-spark-fill {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes report-spark-dot {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes report-spark-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(2.2);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .report-icon-card:hover {
+    transform: none;
+  }
+
+  .report-sparkline__line {
+    stroke-dashoffset: 0;
+  }
+
+  .report-sparkline__area {
+    opacity: 1;
+  }
+
+  .report-sparkline__dot-wrap {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .report-sparkline__pulse {
+    animation: none;
+  }
+}

@@ -4,23 +4,38 @@ import { useEffect, useState } from "react";
 
 import { HustlgramLogoAnimated } from "@/components/brand/hustlgram-logo-animated";
 import {
+  clearIntroLock,
   INTRO_ACTIVE_CLASS,
   INTRO_EXIT_MS,
   INTRO_REMOVE_MS,
   INTRO_STORAGE_KEY,
+  isLeadReportPath,
+  resetIntroAfterNavigation,
 } from "@/lib/intro";
 import { cn } from "@/lib/utils";
-
-function clearIntroLock() {
-  document.documentElement.classList.remove(INTRO_ACTIVE_CLASS);
-  document.body.style.overflow = "";
-}
 
 export function IntroSplash() {
   const [active, setActive] = useState(false);
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
+    const onPageShow = (event: PageTransitionEvent) => {
+      if (!event.persisted) return;
+      resetIntroAfterNavigation();
+      setActive(false);
+      setExiting(false);
+    };
+
+    window.addEventListener("pageshow", onPageShow);
+    return () => window.removeEventListener("pageshow", onPageShow);
+  }, []);
+
+  useEffect(() => {
+    if (isLeadReportPath(window.location.pathname)) {
+      resetIntroAfterNavigation();
+      return;
+    }
+
     const shouldPlay =
       document.documentElement.classList.contains(INTRO_ACTIVE_CLASS) ||
       !sessionStorage.getItem(INTRO_STORAGE_KEY);
