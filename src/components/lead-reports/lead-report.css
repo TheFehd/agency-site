@@ -304,13 +304,13 @@
 /* Mobile layout */
 
 .lead-report-shell {
-  overflow-x: clip;
+  overflow-x: hidden;
   max-width: 100%;
 }
 
 @media (max-width: 767px) {
   .lead-report-page {
-    overflow-x: clip;
+    overflow-x: hidden;
     max-width: 100%;
     padding-bottom: 6.5rem;
   }

@@ -129,13 +129,19 @@ export function AnimatedCounter({
           io.disconnect();
         }
       },
-      { threshold: 0.35 },
+      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" },
     );
 
     io.observe(el);
+
+    // Mobile Safari can miss intersection — show final value after a beat.
+    const fallback = window.setTimeout(() => {
+      setDisplay(parsed.format(parsed.end));
+    }, 1200);
     return () => {
       io.disconnect();
       cancelAnimationFrame(frame);
+      window.clearTimeout(fallback);
     };
   }, [parsed, duration]);
 
