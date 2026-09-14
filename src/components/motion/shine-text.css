@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
-
 .shine-text {
   display: inline-block;
   padding: 0;
@@ -16,7 +14,8 @@
   font-size: inherit;
   text-decoration: none;
   white-space: normal;
-  font-family: "Poppins", sans-serif;
+  /* Loaded via next/font in app/layout.tsx — never re-add a remote @import here. */
+  font-family: var(--font-shine, ui-sans-serif), sans-serif;
 }
 
 @-moz-keyframes shine {

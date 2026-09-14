@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { siteConfig } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/terms",
   title: "Terms & Conditions",
-};
+  description: `The terms that apply to using the ${siteConfig.name} website and engaging our services.`,
+  // Placeholder copy — see docs/LAUNCH-BLOCKERS.md.
+  noindex: true,
+});
 
 export default function TermsPage() {
   return (

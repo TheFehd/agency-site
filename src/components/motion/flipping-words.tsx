@@ -11,6 +11,39 @@ type FlippingWordsProps = {
   className?: string;
 };
 
+/**
+ * Width reserved per character, in em, for the rotating word's slot.
+ *
+ * Measured against DM Sans at the hero's own font size: the four hero words run
+ * 0.497–0.551em per character. 0.58 clears the widest with headroom.
+ *
+ * This is a floor, not a cap — `min-width` lets the grid grow if a longer word is
+ * ever added, so an underestimate would cause reflow but never clipping. Erring
+ * high is the safe direction.
+ *
+ * Deliberately not `ch`: that unit is the advance of "0", which is 0.69em in this
+ * face — it over-reserved by ~30% and left a visible gap after "for".
+ */
+const EM_PER_CHARACTER = 0.58;
+
+/**
+ * Reserves space for the longest word without rendering it.
+ *
+ * An earlier version sized the slot with a visually-hidden copy of the longest
+ * word, which put that word into the server-rendered HTML a second time — the
+ * <h1> serialised as "businessesbusinesses", which is what search engines read.
+ * A pure CSS width keeps the slot stable (so the heading never reflows as words
+ * swap) while leaving exactly one instance of the word in the markup, and is
+ * identical on the server and the client, so it costs no layout shift.
+ */
+const slotWidth = (words: readonly string[]) => {
+  const longest = words.reduce(
+    (length, word) => Math.max(length, word.length),
+    0,
+  );
+  return `${(longest * EM_PER_CHARACTER).toFixed(2)}em`;
+};
+
 export function FlippingWords({
   words,
   interval = 2800,
@@ -19,10 +52,7 @@ export function FlippingWords({
   const prefersReducedMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
 
-  const longestWord = useMemo(
-    () => words.reduce((a, b) => (a.length >= b.length ? a : b), words[0]),
-    [words],
-  );
+  const minWidth = useMemo(() => slotWidth(words), [words]);
 
   useEffect(() => {
     if (prefersReducedMotion || words.length <= 1) return;
@@ -42,11 +72,8 @@ export function FlippingWords({
         "relative inline-grid align-bottom [perspective:800px]",
         className,
       )}
-      aria-live="polite"
+      style={{ minWidth }}
     >
-      <span className="invisible col-start-1 row-start-1 whitespace-nowrap" aria-hidden>
-        {longestWord}
-      </span>
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={words[index]}

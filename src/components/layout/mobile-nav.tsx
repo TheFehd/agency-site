@@ -5,7 +5,7 @@ import Link from "next/link";
 import { HeaderLogo } from "@/components/brand/header-logo";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { BookButton } from "@/components/ui/book-button";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -27,24 +27,21 @@ type MobileNavProps = {
 export function MobileNav({ active, minimal = false }: MobileNavProps) {
   return (
     <Sheet>
+      {/*
+        SheetTrigger already renders a <button>. Wrapping <Button> inside it
+        nested one button in another, which is invalid HTML and threw a
+        hydration error on every page load. Style the trigger directly instead.
+      */}
       <SheetTrigger
         className={cn(
-          "inline-flex md:hidden",
-          minimal &&
-            "size-9 items-center justify-center rounded-full text-foreground transition-colors hover:bg-foreground/8",
+          "md:hidden",
+          minimal
+            ? "inline-flex size-9 items-center justify-center rounded-full text-foreground transition-colors hover:bg-foreground/8"
+            : buttonVariants({ variant: "ghost", size: "icon" }),
         )}
       >
-        {minimal ? (
-          <>
-            <Menu className="size-5" />
-            <span className="sr-only">Open menu</span>
-          </>
-        ) : (
-          <Button variant="ghost" size="icon">
-            <Menu />
-            <span className="sr-only">Open menu</span>
-          </Button>
-        )}
+        <Menu className={minimal ? "size-5" : undefined} />
+        <span className="sr-only">Open menu</span>
       </SheetTrigger>
       <SheetContent side="right" className="w-full max-w-xs">
         <SheetHeader>

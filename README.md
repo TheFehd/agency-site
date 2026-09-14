@@ -17,7 +17,6 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `NEXT_PUBLIC_SITE_URL` | Recommended | Canonical URL for SEO/sitemap |
 | `NEXT_PUBLIC_CALCOM_LINK` | For booking | e.g. `your-username/30min` |
 | `NEXT_PUBLIC_CALCOM_THEME` | Optional | `dark` or `light` |
 | `RESEND_API_KEY` | Optional | Enables contact form email delivery |

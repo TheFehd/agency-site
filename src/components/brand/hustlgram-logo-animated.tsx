@@ -30,10 +30,15 @@ export function HustlgramLogoAnimated({
       aria-label="Hustlgram"
       role="img"
     >
+      {/*
+        Both images are decorative: the wrapper above is role="img" with
+        aria-label="Hustlgram", so alt text here would announce the name twice.
+      */}
       <div className="hg-intro__lockup">
+        {/* eslint-disable @next/next/no-img-element */}
         <img
           className="hg-intro__mark"
-          src="/brand/hustlgram-mark.png"
+          src="/brand/hustlgram-mark.webp"
           alt=""
           width={214}
           height={343}
@@ -41,12 +46,13 @@ export function HustlgramLogoAnimated({
         />
         <img
           className="hg-intro__text"
-          src="/brand/hustlgram-wordmark.png"
-          alt="Hustlgram"
+          src="/brand/hustlgram-wordmark.webp"
+          alt=""
           width={985}
           height={86}
           decoding="async"
         />
+        {/* eslint-enable @next/next/no-img-element */}
       </div>
     </div>
   );

@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { siteConfig } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/privacy",
   title: "Privacy Policy",
-};
+  description: `How ${siteConfig.name} collects, uses, and protects information submitted through this site.`,
+  // Placeholder copy — see docs/LAUNCH-BLOCKERS.md.
+  noindex: true,
+});
 
 export default function PrivacyPage() {
   return (

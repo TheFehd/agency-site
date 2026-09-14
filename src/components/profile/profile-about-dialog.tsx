@@ -31,7 +31,7 @@ export function ProfileAboutDialog({ className }: ProfileAboutDialogProps) {
         aria-label={`About ${profile.name}`}
       >
         <Image
-          src="/profile.jpg"
+          src="/profile.webp"
           alt=""
           fill
           className="object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
@@ -44,7 +44,7 @@ export function ProfileAboutDialog({ className }: ProfileAboutDialogProps) {
         <div className="border-b border-border bg-muted/40 p-6">
           <div className="relative mx-auto size-24 overflow-hidden rounded-full border border-border">
             <Image
-              src="/profile.jpg"
+              src="/profile.webp"
               alt=""
               fill
               className="object-cover object-[center_20%]"
