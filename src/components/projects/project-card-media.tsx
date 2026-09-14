@@ -51,7 +51,6 @@ export function ProjectCardMedia({ project, className }: ProjectCardMediaProps) 
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               sizes="(max-width: 768px) 100vw, 33vw"
-              priority={index === 0}
             />
           </motion.div>
         </AnimatePresence>

@@ -20,8 +20,8 @@ export const projects: Project[] = [
     tags: ["Web app", "Design"],
     description:
       "AI-powered movie streamer that suggests films based on your mood—from the streaming experience to the Mood Matcher AI feature.",
-    image: "/projects/elix-stream.png",
-    images: ["/projects/elix-stream.png", "/projects/elix-ai.png"],
+    image: "/projects/elix-stream.webp",
+    images: ["/projects/elix-stream.webp", "/projects/elix-ai.webp"],
     featured: true,
   },
   {
@@ -31,7 +31,7 @@ export const projects: Project[] = [
     tags: ["Marketing site", "Sales"],
     description:
       "Premium car detailing studio in South Florida—marketing site built to turn interest into booked services.",
-    image: "/projects/mav-detail.png",
+    image: "/projects/mav-detail.webp",
     featured: true,
   },
   {
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     tags: ["Design", "Development"],
     description:
       "LEGO marketplace for buying, selling, and collecting sets—design and development for a collector-focused storefront.",
-    image: "/projects/jmb-brick-co.png",
+    image: "/projects/jmb-brick-co.webp",
     recent: true,
     featured: true,
   },

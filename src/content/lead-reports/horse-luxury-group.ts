@@ -1,6 +1,9 @@
-import luxRentLogo from "@/assets/lead-reports/competitors/lux-rent-dubai.png";
-import octaneLogo from "@/assets/lead-reports/competitors/octane-rent.png";
-import superiorLogo from "@/assets/lead-reports/competitors/superior-rental.png";
+// WebP rather than AVIF: these are static imports, and this version of Turbopack
+// cannot encode AVIF through the static-import pipeline (it warns and emits the
+// file unprocessed). Everything served by path or next/image is AVIF.
+import luxRentLogo from "@/assets/lead-reports/competitors/lux-rent-dubai.webp";
+import octaneLogo from "@/assets/lead-reports/competitors/octane-rent.webp";
+import superiorLogo from "@/assets/lead-reports/competitors/superior-rental.webp";
 
 export const horseLuxuryGroupReport = {
   slug: "horse-luxury-group",

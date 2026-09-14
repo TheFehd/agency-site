@@ -11,6 +11,25 @@ const PRODUCTION_HOST = new URL(SITE_URL).host;
 const isProductionDeployment = process.env.VERCEL_ENV === "production";
 
 const nextConfig: NextConfig = {
+  // A stray lockfile in the home directory makes Next infer the wrong workspace
+  // root, which mis-scopes file tracing. Pin it to this project.
+  turbopack: { root: import.meta.dirname },
+
+  images: {
+    /**
+     * WebP only, deliberately.
+     *
+     * TODO: restore "image/avif" once the libheif fix propagates upstream.
+     *
+     * AVIF optimization is disabled in Next >=16.3.3 / >=15.5.24 because
+     * decoding AVIF reached an RCE in libheif via sharp
+     * (GHSA-2xp9-vwfh-vxw4, upstream GHSA-g89c-p67h-r497). Listing AVIF here
+     * would be inert today, and no AVIF is kept in the repo either, so no
+     * source file reaches that decoder.
+     */
+    formats: ["image/webp"],
+  },
+
   async redirects() {
     // Any host other than the canonical one — the apex, and the auto-assigned
     // *.vercel.app alias that was serving a fully indexable duplicate of the site.

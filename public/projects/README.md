@@ -1,12 +1,12 @@
 # Project images
 
-Add WebP or PNG screenshots here and update paths in `src/content/projects.ts`.
+Screenshots referenced from `src/content/projects.ts`.
 
-Current placeholders are SVG gradients named:
+AVIF only. These are served through `next/image`, which negotiates WebP for
+browsers that need it — a second source file is not required.
 
-- `atlas.svg`
-- `northline.svg`
-- `verde.svg`
-- `lumen.svg`
+Recommended size: 1600×1000 (16:10). Convert with:
 
-Recommended size: 1600×1000 (16:10).
+```
+npx sharp-cli -i input.png -o output.avif --format avif --quality 62
+```
