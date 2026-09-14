@@ -1,3 +1,15 @@
+/**
+ * Single source of truth for the production origin.
+ *
+ * Deliberately hardcoded, not read from an environment variable: a misconfigured
+ * NEXT_PUBLIC_SITE_URL silently poisoned metadataBase, every canonical, the sitemap,
+ * robots.txt and the Organization schema with a Vercel preview URL. Config belongs
+ * in config.
+ *
+ * www is canonical — the apex 301s here.
+ */
+export const SITE_URL = "https://www.hustlgram.com";
+
 export const siteConfig = {
   name: "Hustlgram",
   tagline: "Performance-driven websites & growth",
@@ -16,7 +28,7 @@ export const siteConfig = {
   },
   description:
     "From strategy and UI/UX design to development and launch, we deliver websites that combine premium visuals with real business results.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hustlgram.com",
+  url: SITE_URL,
   email: "hello@hustlgram.com",
   nav: [
     { label: "Book", href: "#book" },
