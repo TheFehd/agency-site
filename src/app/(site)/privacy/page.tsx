@@ -8,6 +8,8 @@ export const metadata: Metadata = pageMetadata({
   path: "/privacy",
   title: "Privacy Policy",
   description: `How ${siteConfig.name} collects, uses, and protects information submitted through this site.`,
+  // Placeholder copy — see docs/LAUNCH-BLOCKERS.md.
+  noindex: true,
 });
 
 export default function PrivacyPage() {

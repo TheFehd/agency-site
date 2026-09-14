@@ -20,6 +20,14 @@ type PageMetadataInput = {
   path: string;
   title?: string;
   description?: string;
+  /**
+   * Keep the route out of search results.
+   *
+   * `follow` stays true so crawlers still traverse the page's links — this is for
+   * pages that are real but not yet worth indexing, not for private ones. Genuinely
+   * private routes declare their own robots block at the segment level.
+   */
+  noindex?: boolean;
 };
 
 /**
@@ -33,12 +41,14 @@ export function pageMetadata({
   path,
   title,
   description,
+  noindex,
 }: PageMetadataInput): Metadata {
   const url = absoluteUrl(path);
 
   return {
     ...(title ? { title } : {}),
     ...(description ? { description } : {}),
+    ...(noindex ? { robots: { index: false, follow: true } } : {}),
     alternates: { canonical: url },
     openGraph: {
       ...(title ? { title } : {}),

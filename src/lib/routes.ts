@@ -22,6 +22,6 @@ export type IndexableRoute = {
  */
 export const indexableRoutes: IndexableRoute[] = [
   { path: "/", changeFrequency: "monthly", priority: 1 },
-  { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
-  { path: "/terms", changeFrequency: "yearly", priority: 0.3 },
+  // /privacy and /terms are withheld until they carry real legal copy — see
+  // docs/LAUNCH-BLOCKERS.md. Placeholder text in the index is worse than absent.
 ];

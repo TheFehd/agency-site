@@ -8,6 +8,8 @@ export const metadata: Metadata = pageMetadata({
   path: "/terms",
   title: "Terms & Conditions",
   description: `The terms that apply to using the ${siteConfig.name} website and engaging our services.`,
+  // Placeholder copy — see docs/LAUNCH-BLOCKERS.md.
+  noindex: true,
 });
 
 export default function TermsPage() {
