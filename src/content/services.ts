@@ -27,7 +27,7 @@ export const services: Service[] = [
     id: "development",
     title: "Development",
     description:
-      "Fast, accessible builds on modern stacks—Next.js, animations that respect motion preferences, SEO-ready.",
+      "Fast, accessible builds on modern foundations—animations that respect motion preferences, SEO-ready from the first commit.",
     icon: Code2,
   },
   {

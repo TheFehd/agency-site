@@ -40,7 +40,7 @@ export const projects: Project[] = [
     year: 2026,
     tags: ["Design", "Development"],
     description:
-      "LEGO marketplace for buying, selling, and collecting sets—design and development for a collector-focused storefront.",
+      "Online marketplace for buying, selling, and collecting—design and development for a collector-focused storefront.",
     image: "/projects/jmb-brick-co.webp",
     recent: true,
     featured: true,

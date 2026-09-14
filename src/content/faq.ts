@@ -9,7 +9,7 @@ export const faqItems: FaqItem[] = [
     id: "types",
     question: "What type of websites do you build?",
     answer:
-      "Marketing sites, product landing pages, portfolios, and lightweight web apps—typically on Next.js. If you need ecommerce or a complex platform, we’ll scope it clearly upfront.",
+      "Marketing sites, product landing pages, portfolios, and lightweight web apps. If you need ecommerce or a more complex platform, we’ll scope it clearly upfront.",
   },
   {
     id: "timeline",
