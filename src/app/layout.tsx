@@ -36,10 +36,6 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     type: "website",
   },
-  icons: {
-    icon: [{ url: "/icon.png", type: "image/png", sizes: "512x512" }],
-    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
-  },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
