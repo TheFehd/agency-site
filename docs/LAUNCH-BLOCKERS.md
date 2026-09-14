@@ -7,6 +7,33 @@ Nothing here blocks a deploy on its own — these block calling the site finishe
 
 ---
 
+## Performance floor waived for PR #1
+
+Performance floor waived for PR #1. Cause: Cal.com embed, 1,771 KB / 83
+requests, 81% of page weight. Being removed from above-the-fold in Phase 2
+(P2-02). Re-measure after Phase 2, no exception thereafter.
+
+Measured on the merged branch, mobile, production build:
+
+| Category | Score | Floor | |
+|---|---|---|---|
+| Performance | 89 | 90 | waived |
+| Accessibility | 97 | 95 | pass |
+| SEO | 100 | 100 | pass |
+
+LCP 3.0s against a 2.5s requirement — also waived, same cause.
+
+What was already done, and did not clear it: the render-blocking Google Fonts
+`@import` was removed from `shine-text.css` and Poppins self-hosted via
+next/font. That took FCP from 1.8s to 1.2s and third-party font requests to
+zero, but left LCP unchanged.
+
+The Cal.com embed was deliberately **not** touched. Lazy-loading it behind a
+click would likely clear both thresholds, but that changes the booking flow and
+belongs with the Phase 2 homepage rework, not a Phase 0 SEO pass.
+
+---
+
 ## Placeholder legal copy
 
 `/privacy` and `/terms` render placeholder text that literally says "Replace with
