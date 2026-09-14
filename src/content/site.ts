@@ -43,11 +43,12 @@ export const siteConfig = {
     secondary: "See our projects",
     secondaryHover: "View work",
   },
-  socials: [
-    { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "Instagram", href: "https://instagram.com" },
-    { label: "X", href: "https://x.com" },
-  ],
+  /**
+   * Real profile URLs only. Placeholder links to platform homepages were removed —
+   * they are not proof of a presence and they poisoned the Organization schema's
+   * sameAs array. Re-add an entry only when a real profile URL exists.
+   */
+  socials: [] as ReadonlyArray<{ label: string; href: string }>,
   footer: {
     privacy: "/privacy",
     terms: "/terms",

@@ -8,7 +8,10 @@ export function JsonLd() {
     description: siteConfig.description,
     url: siteConfig.url,
     email: siteConfig.email,
-    sameAs: siteConfig.socials.map((s) => s.href),
+    // Omitted entirely rather than emitted empty when no real profile exists.
+    ...(siteConfig.socials.length > 0
+      ? { sameAs: siteConfig.socials.map((s) => s.href) }
+      : {}),
   };
 
   return (

@@ -48,6 +48,8 @@ type SocialLinksProps = {
 };
 
 export function SocialLinks({ className }: SocialLinksProps) {
+  if (siteConfig.socials.length === 0) return null;
+
   return (
     <div className={cn("social-links", className)}>
       {siteConfig.socials.map((social) => (
